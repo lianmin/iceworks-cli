@@ -23,7 +23,9 @@ module.exports = (context, options) => {
   config.output.filename('[name].js');
   config.output.publicPath('./');
   config.output.path(path.join(rootDir, 'build'));
-  setCSSRule(config, command !== 'start');
+
+  setCSSRule(config);
+
   if (command === 'start') {
     config.output.publicPath('/demo');
   } else {
@@ -38,6 +40,7 @@ module.exports = (context, options) => {
           filename: `demo/${entryKey}.html`,
           chunks: [entryKey],
           jsPath: `./${entryKey}.js`,
+          cssPath: `./${entryKey}.css`,
           template: path.resolve(__dirname, '../../template/raxDemo.html'),
         },
       ]);

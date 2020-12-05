@@ -36,40 +36,13 @@ const DemoBlock = ({ js, css, name, title, desc, active, onClick }) => {
             </a>
           </div>
           <div className="icons">
-            <a
-              target="_blank"
-              href={ '{{command}}' === 'build' ? `./demo/${name}.html` : `/${name}` }
-              class={`icon web ${!isWebEnable ? 'disabled':''}`}
+            <span
+              class="icon fullscreen"
               onClick={(e) => {
                 e.stopPropagation();
-                if(!isWebEnable){
-                  e.preventDefault();
+                  setOpen(!open);
                 }
-              }}
-              unselectable="none"
-            />
-            {
-              '{{command}}' !== 'build' ?
-              <a
-                target="_blank"
-                href={`/weex/${name}.js?wh_weex=true`}
-                class={`icon weex ${!isWeexEnable ? 'disabled':''}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if(!isWeexEnable){
-                    e.preventDefault();
-                  }
-                }}
-                unselectable="none"
-              />:
-              null
-            }
-            <span
-            class="icon fullscreen"
-            onClick={(e) => {
-              e.stopPropagation();
-                setOpen(!open);
-              }}
+              }
               unselectable="none"
             />
           </div>
